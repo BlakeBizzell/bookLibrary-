@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 require('dotenv').config();
 
-const bookRoutes = require('.routes/books');
+const bookRoutes = require('./routes/books');
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(morgan('combined'));
 app.use(express.json());
 
 //routes
-app.use('api/books', bookRoutes);
+app.use('/api/books', bookRoutes);
 
 //health check 
 app.get('/health', (req, res) => {
@@ -28,5 +28,5 @@ app.use((err, req ,res, next) => {
     res.status(500).json({ error: 'Something went wrong!' });
 });
 
-module.export = app;
+module.exports = app;
 
